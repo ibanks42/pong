@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://k3as28t4mc3t"]
+
+[ext_resource type="Script" path="res://Table/Table.cs" id="1_trdi7"]
+[ext_resource type="PackedScene" uid="uid://bxd45ydb30k5y" path="res://Player/Player.tscn" id="2_xgbwx"]
+[ext_resource type="PackedScene" uid="uid://cu47cce6t0b4s" path="res://Enemy/Enemy.tscn" id="3_lwwma"]
+[ext_resource type="PackedScene" uid="uid://75y0uf8dhbb2" path="res://Ball/Ball.tscn" id="4_51lfs"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_g1dur"]
+b = Vector2(1280, 0)
+
+[node name="Table" type="Node2D"]
+script = ExtResource("1_trdi7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Player" parent="." groups=["Paddles"] instance=ExtResource("2_xgbwx")]
+position = Vector2(112, 0)
+
+[node name="WallTop" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, 0)
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="WallTop"]
+shape = SubResource("SegmentShape2D_g1dur")
+
+[node name="WallBottom" type="StaticBody2D" parent="."]
+position = Vector2(0, 720)
+metadata/_edit_group_ = true
+
+[node name="Collision" type="CollisionShape2D" parent="WallBottom"]
+shape = SubResource("SegmentShape2D_g1dur")
+
+[node name="Enemy" parent="." groups=["Paddles"] instance=ExtResource("3_lwwma")]
+position = Vector2(1176, 0)
+
+[node name="Ball" parent="." groups=["Ball"] instance=ExtResource("4_51lfs")]

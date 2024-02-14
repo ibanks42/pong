@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxd45ydb30k5y"]
+
+[ext_resource type="Script" path="res://Player/Player.cs" id="1_libqg"]
+[ext_resource type="Texture2D" uid="uid://c4cswtmnfod6n" path="res://assets/paddle.png" id="2_la40h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2ot4"]
+size = Vector2(62, 255)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.48, 0.48)
+script = ExtResource("1_libqg")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_q2ot4")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(2.19355, 2.19008)
+texture = ExtResource("2_la40h")
